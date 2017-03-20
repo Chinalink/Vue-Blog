@@ -1,5 +1,6 @@
-import Login from '../pages/login.vue'
-import Reg from '../pages/reg.vue'
+import setup from '../pages/setup.vue'
+import login from '../pages/login.vue'
+import reg from '../pages/reg.vue'
 import Index from '../pages/index.vue'
 
 const routes = [
@@ -10,11 +11,15 @@ const routes = [
   },
   {
     path: '/login',
-    component: Login
+    component: login
   },
   {
     path: '/reg',
-    component: Reg
+    component: reg
+  },
+  {
+    path: '/setup',
+    component: setup
   }
 ]
 

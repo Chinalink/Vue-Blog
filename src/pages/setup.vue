@@ -4,8 +4,7 @@
       <h1>XD-Blog</h1>
       <input type="text" v-model.trim="account"  value="" placeholder="请输入用户名">
       <input type="password" v-model.trim="password"   value="" placeholder="请输入密码">
-      <button type="button" name="button" @click="login">登录</button>
-      <a href="#">忘记密码？</a>
+      <button type="button" name="button" @click="setup">注册</button>
     </div>
   </div>
 </template>
@@ -51,13 +50,6 @@
   margin-top: 20px;
   background: #687dfd;
 }
-.login-box a{
-  float: right;
-  margin-top: 15px;
-  font-size: 14px;
-  color: #fff;
-  text-align: right;
-}
 .login-box input::-webkit-input-placeholder { /* WebKit browsers */
   color:#fff;
 }
@@ -73,7 +65,7 @@
 </style>
 <script>
 export default {
-  name: 'login',
+  name: 'setup',
   data () {
     return {
       account: '',
@@ -81,12 +73,12 @@ export default {
     }
   },
   methods: {
-    login () {
+    setup () {
       let params = {
         account: this.account,
         password: this.password
       }
-      this.$http.post('/api/getAccound', params)
+      this.$http.post('/api/createAccount', params)
         .then((res) => {
           console.log(res)
         })

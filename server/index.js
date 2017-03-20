@@ -1,15 +1,24 @@
+// 引入模块
+const api = require('./api');
+const fs = require('fs');
+const path = require('path');
+const bodyParser = require('body-parser');
 const express= require('express');
 const app = express();
 
-app.get('/', function(req,res){
-  res.send('Hello World');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(api);
+
+// 访问静态资源文件 这里是访问所有dist目录下的静态资源文件
+app.use(express.static(path.resolve(__dirname, '../dist')))
+app.get('*', (req, res) => {
+    const html = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8')
+    res.send(html)
 })
 
-const server  = app.listen(8081, function(){
-  let host = server.address().address
-  let port = server.address().port
-  console.log("应用实例，访问地址为 http://%s:%s", host, port)
-})
+app.listen(8088);
+console.log('success listen…………');
 
 
 
