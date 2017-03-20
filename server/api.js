@@ -1,32 +1,44 @@
+// 可能是我的node版本问题，不用严格模式使用ES6语法会报错
 "use strict";
-const Models = require('./db');
+const models = require('./db');
 const express = require('express');
 const router = express.Router();
 
 router.post('/api/createAccount',(req, res) => {
   let account = req.body.account
-  Models.LoginModels.findOne({account}, 'account', (err, data) => {
-    if(data.account === account){
-      res.send({state: 0, msg: '账号已存在'})
-    }else{
-      let newAccount = new Models.Login({
-        account: req.body.account,
-        password: req.body.password
-      });
-      newAccount.save((err, data) => {
-        if(err) {
-          res.send('创建失败');
-        } else {
-          res.send('创建成功');
+  let password = req.body.password
+  if(account ==''||password==''){
+    res.send({state: 4, msg: '账号或密码不能为空'})
+  }else{
+    models.Login.findOne({account}, 'account', (err, data) => {
+      if(err){
+        res.send({state: 3, msg: err})
+      }else{
+        if(data.account === account){
+          res.send({state: 0, msg: '账号已存在'})
+        }else{
+          let newAccount = new models.Login({
+            account: req.body.account,
+            password: req.body.password
+          });
+          newAccount.save((err, data) => {
+            if(err) {
+              res.send({state: 0, msg: '注册失败'});
+            } else {
+              res.send({state: 1, msg: '注册失败'});
+            }
+          });
         }
-      });
-    }
-  })
+      }
+    })
+  }
+
 });
 
 router.post('/api/getAccound', (req, res) => {
   let account = req.body.account
-  Models.LoginModels.findOne( {account}, 'password' , (err, data) => {
+  let password = req.body.password
+  models.Login.findOne( {account}, 'password' , (err, data) => {
     switch (true) {
       case !!err:
       console.log(err)

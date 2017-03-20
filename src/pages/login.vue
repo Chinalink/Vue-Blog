@@ -88,7 +88,9 @@ export default {
       }
       this.$http.post('/api/getAccound', params)
         .then((res) => {
-          console.log(res)
+          if (res.data.state === 1) {
+            this.$router.push({name: 'index'})
+          }
         })
         .catch((res) => {
           console.log(res)
