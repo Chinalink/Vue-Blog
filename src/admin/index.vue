@@ -6,8 +6,9 @@
 </template>
 
 <script>
-  import sideBar from '../components/sideBar.vue'
+  import sideBar from '../components/admin/sideBar.vue'
   export default {
+    name: 'adminIndex',
     components: {
       'xd-sidebar': sideBar
     }

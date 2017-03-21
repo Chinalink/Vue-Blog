@@ -1,11 +1,11 @@
-import setup from '../pages/setup.vue'
-import login from '../pages/login.vue'
-import reg from '../pages/reg.vue'
-import Index from '../pages/index.vue'
+import setup from '../admin/setup.vue'
+import login from '../admin/login.vue'
+import reg from '../admin/reg.vue'
+import Index from '../admin/index.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/admin/',
     name: 'index',
     component: Index
   },
