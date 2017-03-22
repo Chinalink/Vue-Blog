@@ -1,5 +1,5 @@
 <template>
   <div class="">
-    这里是首页
+    写文章
   </div>
 </template>

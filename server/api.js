@@ -10,14 +10,14 @@ router.post('/api/createAccount',(req, res) => {
   if(account ==''||password==''){
     res.send({state: 4, msg: '账号或密码不能为空'})
   }else{
-    models.Login.findOne({account}, 'account', (err, data) => {
+    models.User.findOne({account}, 'account', (err, data) => {
       if(err){
         res.send({state: 3, msg: err})
       }else{
         if(data.account === account){
           res.send({state: 0, msg: '账号已存在'})
         }else{
-          let newAccount = new models.Login({
+          let newAccount = new models.User({
             account: req.body.account,
             password: req.body.password
           });
@@ -38,7 +38,7 @@ router.post('/api/createAccount',(req, res) => {
 router.post('/api/getAccound', (req, res) => {
   let account = req.body.account
   let password = req.body.password
-  models.Login.findOne( {account}, 'password' , (err, data) => {
+  models.User.findOne( {account}, 'password' , (err, data) => {
     switch (true) {
       case !!err:
       console.log(err)

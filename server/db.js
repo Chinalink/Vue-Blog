@@ -7,18 +7,18 @@ mongoose.connect('mongodb://localhost/test');
 const db = mongoose.connection;
 
 // 监测是否有异常
-db.once('error',() => console.log('Mongo connection error'));
-db.once('open',() => console.log('Mongo connection successed'));
+db.once('error',() => console.log("数据库连接失败：" + error));
+db.once('open',() => console.log("------数据库连接成功！------"));
 
 /************** 定义模式loginSchema **************/
-const loginSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     account : String,
     password : String
 });
 
 /************** 定义模型Model **************/
 const Models = {
-    Login: mongoose.model('Login',loginSchema)
+    User: mongoose.model('User', userSchema)
 }
 
 module.exports = Models;

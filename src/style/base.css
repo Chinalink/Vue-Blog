@@ -68,11 +68,11 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #
 
 @font-face {
   font-family: 'iconfont';  /* project id 258957 */
-  src: url('//at.alicdn.com/t/font_l64rob1zajes714i.eot');
-  src: url('//at.alicdn.com/t/font_l64rob1zajes714i.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_l64rob1zajes714i.woff') format('woff'),
-  url('//at.alicdn.com/t/font_l64rob1zajes714i.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_l64rob1zajes714i.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_5z739jx7f5s46lxr.eot');
+  src: url('//at.alicdn.com/t/font_5z739jx7f5s46lxr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_5z739jx7f5s46lxr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_5z739jx7f5s46lxr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_5z739jx7f5s46lxr.svg#iconfont') format('svg');
 }
 .iconfont{
     font-family:"iconfont" !important;
@@ -82,11 +82,11 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #
     -moz-osx-font-smoothing: grayscale;
 
 }
-.ic-home::before{content: "\e610";}
-.ic-image::before{content: "\e674"}
-.ic-leftArrow::before{content: "\e601"}
-.ic-user::before{content: "\e626"}
-
-/*通用样式*/
-.wrap-row{width: 100%; min-width: 1200px; }
-.wrap-center{width: 1200px; margin: 0 auto;}
+.ic-home::before{content: "\e602";}
+.ic-note::before{content: "\e624";}
+.ic-image::before{content: "\e6ee";}
+.ic-leftArrow::before{content: "\e601";}
+.ic-downArrow::before{content: "\e6ef";}
+.ic-user::before{content: "\e6b8";}
+.ic-set::before{content: "\e625";}
+.ic-out::before{content: "\e600";}
