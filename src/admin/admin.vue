@@ -3,13 +3,16 @@
     <xd-sidebar></xd-sidebar>
     <div class="xd-content">
       <xd-topbar></xd-topbar>
-      <router-view></router-view>
+      <div class="xd-content-page">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
 
 <style>
   .xd-content{margin-left: 220px;}
+  .xd-content-page{padding: 20px;}
 </style>
 
 <script>

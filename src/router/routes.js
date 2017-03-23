@@ -5,6 +5,7 @@ import reg from '../admin/reg.vue'
 
 import admin from '../admin/admin.vue'
 import index from '../admin/index.vue'
+import articleList from '../admin/articleList.vue'
 import edit from '../admin/edit.vue'
 import pic from '../admin/pic.vue'
 
@@ -13,6 +14,7 @@ const routes = [
     path: '/admin',
     component: admin,
     children: [
+      { name: 'articleList', path: 'articleList', component: articleList },
       { name: 'index', path: 'index', component: index },
       { name: 'edit', path: 'edit', component: edit },
       { name: 'pic', path: 'pic', component: pic }
