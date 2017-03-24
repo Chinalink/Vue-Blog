@@ -16,6 +16,12 @@ const userSchema = mongoose.Schema({
     password : String
 });
 
+const ArticleSchema = mongoose.Schema({
+  title : String,
+  content : String,
+  tag : Array
+})
+
 /************** 定义模型Model **************/
 const Models = {
     User: mongoose.model('User', userSchema)

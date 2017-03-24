@@ -6,12 +6,12 @@
       <p>(超级管理员)</p>
     </div>
     <ul>
-      <li v-for="(nav, index) in navlist" :class="{active: showUl==0?false:showUl==index}"  @click="showUl=index" >
+      <li v-for="(nav, index) of navlist" :class="{active: isActive==0?false:isActive==index}" @click="toggle(index, nav)">
         <router-link :to="{name: nav.link}"><i class="iconfont" :class="'ic-' + nav.icon"></i>{{ nav.title }}
-          <span class="iconfont" :class="{'ic-leftArrow': showUl!=index||showUl==0, 'ic-downArrow':showUl==index&&showUl!=0}" ></span>
+          <span class="iconfont" :class="{'ic-leftArrow': isActive!=index||isActive==0, 'ic-downArrow':isActive==index&&isActive!=0}" ></span>
         </router-link>
-          <ul v-if="nav.children" v-show="showUl==index">
-            <li v-for="children in nav.children">
+          <ul v-if="nav.children" v-show="isActive==index">
+            <li v-for="children of nav.children" @click.stop="childToggle(children.title)">
               <router-link :to="{name: children.link}">{{ children.title }}</router-link>
             </li>
           </ul>
@@ -50,10 +50,19 @@
           { icon: 'user', title: '用户管理' },
           { icon: 'set', title: '设置' }
         ],
-        showUl: ''
+        isActive: ''
       }
     },
     methods: {
+      toggle (index, nav) {
+        this.isActive = index
+        if (!nav.children) {
+          this.$emit('changeTitle', nav.title)
+        }
+      },
+      childToggle (title) {
+        this.$emit('changeTitle', title)
+      }
     }
   }
 </script>
