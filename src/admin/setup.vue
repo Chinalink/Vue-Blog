@@ -9,6 +9,32 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'setup',
+  data () {
+    return {
+      account: '',
+      password: ''
+    }
+  },
+  methods: {
+    setup () {
+      let params = {
+        account: this.account,
+        password: this.password
+      }
+      this.$http.post('/api/createAccount', params)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((res) => {
+          console.log(res)
+        })
+    }
+  }
+}
+</script>
 <style scoped>
 .wrap-row{
   position: fixed;
@@ -63,29 +89,3 @@
 　color:#fff;
 }
 </style>
-<script>
-export default {
-  name: 'setup',
-  data () {
-    return {
-      account: '',
-      password: ''
-    }
-  },
-  methods: {
-    setup () {
-      let params = {
-        account: this.account,
-        password: this.password
-      }
-      this.$http.post('/api/createAccount', params)
-        .then((res) => {
-          console.log(res)
-        })
-        .catch((res) => {
-          console.log(res)
-        })
-    }
-  }
-}
-</script>

@@ -11,11 +11,6 @@
   </div>
 </template>
 
-<style>
-  .xd-content{margin-left: 220px;}
-  .xd-content-page{padding: 20px;}
-</style>
-
 <script>
   import sideBar from '../components/admin/sideBar.vue'
   import topBar from '../components/admin/topBar.vue'
@@ -39,3 +34,24 @@
     }
   }
 </script>
+
+<style>
+  .xd-content{
+    margin-left: 220px;
+  }
+  .xd-content-page{
+    margin: 15px;
+    padding:15px;
+    background: #fff;
+    border-top: 3px solid #e7eaec;
+  }
+  .xd-content-page>h1{
+    padding-bottom: 14px;
+    margin: 0 -15px;
+    border-bottom: 1px solid #e7eaec;
+    font-size: 14px;
+    font-weight: 600;
+    color: #676a6c;
+    text-indent: 15px;
+  }
+</style>

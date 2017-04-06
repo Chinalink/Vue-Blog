@@ -10,6 +10,35 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'login',
+  data () {
+    return {
+      account: '',
+      password: ''
+    }
+  },
+  methods: {
+    login () {
+      let params = {
+        account: this.account,
+        password: this.password
+      }
+      this.$http.post('/api/getAccound', params)
+        .then((res) => {
+          if (res.data.state === 1) {
+            this.$router.push({name: 'index'})
+          }
+        })
+        .catch((res) => {
+          console.log(res)
+        })
+    }
+  }
+}
+</script>
+
 <style scoped>
 .wrap-row{
   position: fixed;
@@ -71,31 +100,3 @@
 　color:#fff;
 }
 </style>
-<script>
-export default {
-  name: 'login',
-  data () {
-    return {
-      account: '',
-      password: ''
-    }
-  },
-  methods: {
-    login () {
-      let params = {
-        account: this.account,
-        password: this.password
-      }
-      this.$http.post('/api/getAccound', params)
-        .then((res) => {
-          if (res.data.state === 1) {
-            this.$router.push({name: 'index'})
-          }
-        })
-        .catch((res) => {
-          console.log(res)
-        })
-    }
-  }
-}
-</script>
