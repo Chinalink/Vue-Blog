@@ -6,7 +6,7 @@
       <p>(超级管理员)</p>
     </div>
     <ul>
-      <li v-for="(nav, index) of navlist" :class="{active: isActive==0?false:isActive==index}" @click="toggle(index, nav)">
+      <li v-for="(nav, index) of navlist" :class="{active: isActive==index}" @click="toggle(index, nav)">
         <router-link :to="{name: nav.link}"><i class="iconfont" :class="'ic-' + nav.icon"></i>{{ nav.title }}
           <span class="iconfont" :class="{'ic-leftArrow': isActive!=index||isActive==0, 'ic-downArrow':isActive==index&&isActive!=0}" ></span>
         </router-link>
@@ -19,22 +19,6 @@
     </ul>
   </div>
 </template>
-
-<style>
-.xd-sidebar{position: fixed; width: 220px; height: 100%; background: #2f4050;}
-.xd-sidebar>ul>li.active{background-color: #293846;}
-.xd-sidebar>ul>li>a{ display: block; padding: 14px 20px 14px 25px; font-size: 12px; color: #a7b1c2; cursor: pointer;}
-.xd-sidebar>ul>li>a:hover{ background-color: #293846; color: #fff;}
-.xd-sidebar>ul>li>a>i{margin-right: 10px;}
-.xd-sidebar>ul>li>a>span{float: right; display: inline;}
-.xd-sidebar>ul>li>ul>li:last-child{padding-bottom: 14px;}
-.xd-sidebar>ul>li>ul>li>a{display: block; padding: 7px 20px 7px 48px; font-size: 12px; color: #a7b1c2; cursor: pointer;}
-.xd-sidebar>ul>li>ul>li>a:hover{color: #fff;}
-.xd-siderbar-head{ padding-bottom: 10px; height: 166px; background: url(../../images/common/img_sidebg.png) no-repeat; text-align: center; color: #dfe4ed;}
-.xd-siderbar-head>img{ margin-top: 15px; width: 80px; height: 80px; border-radius: 50%;}
-.xd-siderbar-head>h4{margin:5px 0; font-size: 14px;}
-.xd-siderbar-head>p{font-size: 12px;}
-</style>
 
 <script>
   import headSrc from '../../images/common/pic_head.jpg'
@@ -53,6 +37,9 @@
         isActive: ''
       }
     },
+    mounted: function () {
+      console.log(this.isActive)
+    },
     methods: {
       toggle (index, nav) {
         this.isActive = index
@@ -66,3 +53,19 @@
     }
   }
 </script>
+
+<style scoped>
+.xd-sidebar{position: fixed; width: 220px; height: 100%; background: #2f4050;}
+.xd-sidebar>ul>li.active{background-color: #293846;}
+.xd-sidebar>ul>li>a{ display: block; padding: 14px 20px 14px 25px; font-size: 12px; color: #a7b1c2; cursor: pointer;}
+.xd-sidebar>ul>li>a:hover{ background-color: #293846; color: #fff;}
+.xd-sidebar>ul>li>a>i{margin-right: 10px;}
+.xd-sidebar>ul>li>a>span{float: right; display: inline;}
+.xd-sidebar>ul>li>ul>li:last-child{padding-bottom: 14px;}
+.xd-sidebar>ul>li>ul>li>a{display: block; padding: 7px 20px 7px 48px; font-size: 12px; color: #a7b1c2; cursor: pointer;}
+.xd-sidebar>ul>li>ul>li>a:hover{color: #fff;}
+.xd-siderbar-head{ padding-bottom: 10px; height: 166px; background: url(../../images/common/img_sidebg.png) no-repeat; text-align: center; color: #dfe4ed;}
+.xd-siderbar-head>img{ margin-top: 15px; width: 80px; height: 80px; border-radius: 50%;}
+.xd-siderbar-head>h4{margin:5px 0; font-size: 14px;}
+.xd-siderbar-head>p{font-size: 12px;}
+</style>

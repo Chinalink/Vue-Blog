@@ -13,6 +13,7 @@ const routes = [
   {
     path: '/admin',
     component: admin,
+    redirect: { name: 'index' },
     children: [
       { name: 'articleList', path: 'articleList', component: articleList },
       { name: 'index', path: 'index', component: index },

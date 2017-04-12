@@ -16,15 +16,23 @@ const userSchema = mongoose.Schema({
     password : String
 });
 
-const ArticleSchema = mongoose.Schema({
-  title : String,
-  content : String,
-  tag : Array
+const articleSchema = mongoose.Schema({
+  title:  String,
+  author: String,
+  body:   String,
+  comments: [{ body: String, date: Date }],
+  date: { type: Date, default: Date.now },
+  hidden: Boolean,
+  meta: {
+    votes: Number,
+    favs:  Number
+  }
 })
 
 /************** 定义模型Model **************/
 const Models = {
-    User: mongoose.model('User', userSchema)
+    User: mongoose.model('User', userSchema),
+    Article: mongoose.model('Article', articleSchema)
 }
 
 module.exports = Models;

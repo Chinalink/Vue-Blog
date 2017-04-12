@@ -22,11 +22,16 @@ export default {
     setup () {
       let params = {
         account: this.account,
-        password: this.password
+        password: this.password,
+        name: '胡小呆'
       }
       this.$http.post('/api/createAccount', params)
         .then((res) => {
-          console.log(res)
+          console.log(res.data)
+          if (res.data.state === 1) {
+            alert('注册成功!')
+            this.$router.push({name: 'login'})
+          }
         })
         .catch((res) => {
           console.log(res)

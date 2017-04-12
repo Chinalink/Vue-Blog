@@ -1,4 +1,5 @@
 // 引入模块
+"use strict";
 const api = require('./api');
 const fs = require('fs');
 const path = require('path');
@@ -16,7 +17,6 @@ app.get('*', (req, res) => {
     const html = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8')
     res.send(html)
 })
-
 app.listen(8088);
 console.log('success listen…………');
 

@@ -28,7 +28,6 @@
     },
     methods: {
       getTitle (title) {
-        console.log(title)
         this.pageTitle = title
       }
     }
