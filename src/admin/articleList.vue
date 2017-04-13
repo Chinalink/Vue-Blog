@@ -1,5 +1,21 @@
 <template>
   <div class="article-list">
+    <div class="article-option">
+      <xd-button class="new-article" type="success" @click="alertTxt">写文章</xd-button>
+      <div class="radio-box">
+        <xd-button class="active">全部（100）</xd-button>
+        <xd-button>我的（70）</xd-button>
+        <xd-button>已发布（70）</xd-button>
+        <xd-button>草稿（30）</xd-button>
+      </div>
+      <div class="">
+
+      </div>
+      <div class="search-box">
+        <xd-button type="search">搜索</xd-button>
+        <input type="search" name="" value="" placeholder="文章搜索">
+      </div>
+    </div>
     <table>
 			<thead>
 				<tr>
@@ -25,9 +41,9 @@
           <td>{{ article.comments }}</td>
           <td>{{ article.date }}</td>
           <td>
-            <router-link class="btn btn-success" :to="{ name: 'index'}">编辑</router-link>
-            <button class="btn btn-primary">预览</button>
-            <button class="btn btn-danger">删除</button>
+            <xd-button type="primary" size="small">编辑</xd-button>
+            <xd-button type="success" size="small">预览</xd-button>
+            <xd-button type="danger" size="small">删除</xd-button>
           </td>
 				</tr>
 			</tbody>
@@ -36,6 +52,7 @@
 </template>
 
 <script>
+  import Button from '../components/admin/button.vue'
   export default {
     data () {
       return {
@@ -66,12 +83,71 @@
           }
         ]
       }
+    },
+    methods: {
+      alertTxt () {
+        alert('1')
+      }
+    },
+    components: {
+      'xd-button': Button
     }
   }
 </script>
 <style scoped>
+  .search-box input::-webkit-search-cancel-button { display: none; }
+  .search-box input::-webkit-input-placeholder {
+    color:#999;
+  }
   .article-list{
     margin-top: 15px;
+  }
+  .article-option{
+    margin-bottom: 7px;
+    *zoom:1;
+  }
+  .article-option:after{
+    content:"";
+    display:block;
+    height:0;
+    clear:both;
+  }
+  .article-option .new-article, .article-option .radio-box{
+    float: left;
+    margin-right: 25px;
+  }
+  .article-option .radio-box button{
+    float: left;
+    color: #666;
+  }
+  .article-option .radio-box button.active{
+    border-color: #d2d2d2;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15) inset;
+    color: #333;
+  }
+  .article-option .radio-box button:first-child{
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .article-option .radio-box button:nth-child(2),.article-option .radio-box button:nth-child(3){
+    border-right: 0;
+    border-radius: 0;
+  }
+  .article-option .radio-box button:last-child{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .article-option .search-box, .article-option .search-box button, .article-option .search-box input{
+    float: right;
+  }
+  .article-option .search-box input{
+    padding: 6px 0;
+    width: 200px;
+    border:1px solid #e5e6e7;
+    font-size: 12px;
+    color: #666;
+    text-indent: 1em;
   }
   .article-list table{
     font-size: 13px;
@@ -103,25 +179,5 @@
     float: left;
     margin-top: 3px;
     font-size: 18px;
-  }
-  .btn{
-    padding: 2.5px 5px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 3px;
-    font-size: 12px;
-    color: #fff;
-  }
-  .btn-success{
-    border-color:#1a7bb9;
-    background-color:#1a7bb9;
-  }
-  .btn-primary{
-    border-color:#18a689;
-    background-color:#18a689;
-  }
-  .btn-danger{
-    border-color:#ec4758;
-    background-color:#ec4758;
   }
 </style>

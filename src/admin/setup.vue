@@ -22,8 +22,7 @@ export default {
     setup () {
       let params = {
         account: this.account,
-        password: this.password,
-        name: '胡小呆'
+        password: this.password
       }
       this.$http.post('/api/createAccount', params)
         .then((res) => {

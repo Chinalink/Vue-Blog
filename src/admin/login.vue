@@ -28,6 +28,7 @@ export default {
       this.$http.post('/api/getAccound', params)
         .then((res) => {
           if (res.data.state === 1) {
+            alert('登录成功！')
             this.$router.push({name: 'index'})
           }
         })

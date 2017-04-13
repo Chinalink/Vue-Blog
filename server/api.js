@@ -4,6 +4,7 @@ const models = require('./db');
 const express = require('express');
 const router = express.Router();
 
+// 创建管理员账户
 router.post('/api/createAccount',(req, res) => {
   let account = req.body.account,
       password = req.body.password
@@ -50,27 +51,28 @@ router.post('/api/createAccount',(req, res) => {
   }
 });
 
+// 登录
 router.post('/api/getAccound', (req, res) => {
-  // let account = req.body.account
-  // let password = req.body.password
-  // models.User.findOne( {account}, 'password' , (err, data) => {
-  //   switch (true) {
-  //     case !!err:
-  //     console.log(err)
-  //     break
-  //     case !data:
-  //     res.send({state: 0, msg: '账号不存在'})
-  //     break
-  //     case data.password === password:
-  //       res.send({state: 1, msg: '登陆成功'})
-  //       break
-  //     case data.password !== password:
-  //       res.send({state: 2, msg: '密码错误'})
-  //       break
-  //     default :
-  //       res.send({state: 3, msg: '未知错误'})
-  //   }
-  // })
+  let account = req.body.account
+  let password = req.body.password
+  models.User.findOne( {account}, 'password' , (err, user) => {
+    switch (true) {
+      case err:
+        res.send({state: 4, msg: err})
+        break
+      case !user:
+        res.send({state: 0, msg: '账号不存在'})
+        break
+      case user.password === password:
+        res.send({state: 1, msg: '登陆成功'})
+        break
+      case user.password !== password:
+        res.send({state: 2, msg: '密码错误'})
+        break
+      default :
+        res.send({state: 3, msg: '未知错误'})
+    }
+  })
 })
 
 module.exports = router;
